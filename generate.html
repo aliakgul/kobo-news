@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>News Sources</title>
+    <style>
+      body {
+        font-family: 'Times New Roman', Times, serif;
+        background-color: #ffffff;
+        color: #000000;
+        margin: 0;
+        padding: 0;
+      }
+
+      header {
+        display: block;
+        text-align: center;
+        height: 100vh;
+        background-color: #000000;
+        color: #ffffff;
+        font-weight: bold;
+      }
+
+      section {
+        padding: 0 10px;
+        height: 100vh;
+        box-sizing: border-box;
+      }
+
+      .card {
+        display: block;
+        height: calc((100vh - 160px) / 10);
+        margin-top: 2vh;
+        gap: 10px;
+        border: 1px solid #000000;
+        text-decoration: none;
+        color: #000;
+        background-color: #f1f1f1;
+        box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+        border-radius: 5px;
+      }
+
+      .card h2 {
+        display: inline-block;
+        padding-left: 10px;
+        font-size: 12px;
+      }
+
+      .badge {
+        display: inline-block;
+        font-size: 7px;
+        padding: 3px 3px;
+        color: #ffffff;
+        background-color: #555;
+        border: none;
+        border-radius: 12px;
+        font-weight: bold;
+        text-transform: uppercase;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>NEWS SOURCES</h1>
+    </header>
+    <main></main>
+  </body>
+</html>
+<script>
+  const content = [
+    { name: 'Brutalist Summary', source: 'https://brutalist.report/summary', tags: ['lite'] },
+    { name: 'Brutalist News', source: 'https://brutalist.report/topic/news?limit=10', tags: ['lite'] },
+    { name: 'Skimfeed', source: 'https://skimfeed.com/newspop.html', tags: ['lite'] },
+    { name: 'CNN (Cable News Network)', source: 'https://lite.cnn.com', tags: ['usa', 'lite'] },
+    { name: 'Reuters', source: 'https://neuters.de', tags: ['uk', 'lite'] },
+    { name: 'CBC (Canadian Broadcasting Corporation)', source: 'https://www.cbc.ca/lite', tags: ['lite'] },
+    { name: 'NPR (National Public Radio)', source: 'https://text.npr.org', tags: ['usa', 'lite'] },
+    { name: 'News Now', source: 'https://www.newsnow.co.uk/h/Hot+Topics', tags: ['lite'] },
+    { name: 'Biztoc', source: 'https://biztoc.com/light', tags: ['lite'] },
+    { name: 'The Christian Science Monitor', source: 'https://www.csmonitor.com/text_edition', tags: ['usa', 'lite'] },
+    { name: 'Wikipedia Events', source: 'https://en.m.wikipedia.org/wiki/Portal:Current_events', tags: ['lite'] },
+    { name: 'News As Facts', source: 'https://newsasfacts.com', tags: ['lite'] },
+    { name: 'Daily Mail', source: 'https://www.dailymail.co.uk/textbased/channel-2/index.html', tags: ['uk', 'lite'] },
+    { name: 'NBC News', source: 'https://lite.nbcnews.com', tags: ['usa', 'lite'] },
+    { name: 'New York Times', source: 'https://www.nytimes.com/timeswire', tags: ['usa'] },
+    { name: 'BBC (British Broadcasting Corporation', source: 'https://www.bbc.com/news', tags: ['uk'] },
+    { name: 'The Guardian', source: 'https://www.theguardian.com/world', tags: ['uk'] },
+    { name: 'Wall Street Journal', source: 'https://www.wsj.com/news/latest-headlines', tags: ['usa'] },
+    { name: 'The Washington Post', source: 'https://www.washingtonpost.com/politics', tags: ['usa'] },
+    { name: 'Euronews', source: 'https://www.euronews.com/just-in', tags: ['europe'] },
+    { name: 'Deutsche Welle', source: 'https://www.dw.com', tags: ['germany'] },
+    { name: 'Le Monde', source: 'https://www.lemonde.fr/en', tags: ['france'] },
+    { name: 'Al Jazeera', source: 'https://www.aljazeera.com/news', tags: ['qatar'] },
+    { name: 'Al Monitor', source: 'https://www.al-monitor.com', tags: ['middle east'] },
+    { name: 'Sputnik Globe', source: 'https://sputnikglobe.com/world', tags: ['russia'] },
+    { name: 'CGTN (China Global Television Network', source: 'https://www.cgtn.com/world', tags: ['china'] },
+    { name: 'Japan Times', source: 'https://www.japantimes.co.jp/news/world', tags: ['japan'] },
+    { name: 'South China Morning Post', source: 'https://www.scmp.com/live', tags: ['hong kong'] },
+    { name: 'The Hindu', source: 'https://www.thehindu.com/news/international', tags: ['india'] },
+    { name: 'Dawn Pakistan', source: 'https://www.dawn.com/world', tags: ['pakistan'] },
+    { name: 'TRT World', source: 'https://www.trtworld.com', tags: ['turkey'] }
+  ];
+
+  document.querySelector('main').innerHTML = content
+    .map((t, i) => {
+      const containerStart = i % 8 === 0 ? '\n<section>' : '';
+      const containerEnd = (i + 1) % 8 === 0 ? '\n</section>' : '';
+      return `${containerStart}\n<a href="${t.source}" class="card">\n<h2>${t.name}</h2>${t.tags
+        .map((tag) => `\n<div class="badge">${tag}</div>`)
+        .join('')}\n</a>${containerEnd}`;
+    })
+    .join('');
+  document.currentScript.remove();
+  console.info('NEWS 📰 Copy the following html element 📑');
+  console.log(document.querySelector('html'));
+</script>
