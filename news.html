@@ -1,0 +1,96 @@
+<html lang="en">
+  <head>
+    <script type="text/javascript" src="/___vscode_livepreview_injected_script"></script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="" />
+    <link href="https://fonts.googleapis.com/css2?family=Fjalla+One" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans" rel="stylesheet" />
+    <title>Newspaper 📰</title>
+    <style>
+      body {
+        font-family: 'DM Sans', sans-serif;
+        font-family: 'Fjalla One', sans-serif;
+        font-size: 2rem;
+        font-weight: 400;
+        font-style: normal;
+        background-color: rgb(200, 200, 200);
+        color: black;
+        text-align: center;
+        margin: 0;
+        padding: 0;
+      }
+
+      a {
+        color: unset;
+        text-decoration: unset;
+      }
+
+      main {
+        display: grid;
+        grid-template-columns: auto auto auto;
+        padding: 1rem;
+      }
+
+      main > .card {
+        display: block;
+        text-align: end;
+        margin: 0.4rem 0.2rem;
+        padding: 0.2rem;
+        background-color: rgb(240, 240, 240);
+        border: 0.1rem solid black;
+        border-radius: 1rem;
+      }
+
+      @media only screen and (max-width: 1000px) {
+        body {
+          font-size: 1.4rem;
+        }
+        main {
+          grid-template-columns: auto auto;
+        }
+      }
+      @media only screen and (max-width: 400px) {
+        body {
+          font-size: 1.2rem;
+        }
+        main {
+          grid-template-columns: auto;
+        }
+        h1 {
+          font-size: 1.5rem;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <header>
+      <h1>NEWS DASHBOARD 📰</h1>
+    </header>
+    <main>
+      <a id="card0" class="card" target="_blank" href="https://en.m.wikipedia.org/wiki/Portal:Current_events">Wikipedia Events 🗂️</a><a id="card1" class="card" target="_blank" href="https://en.m.wikinews.org/wiki/Main_Page">Wikinews 🗂️</a><a id="card2" class="card" target="_blank" href="https://news.google.com/home">Google News 🗂️</a
+      ><a id="card3" class="card" target="_blank" href="https://edition.cnn.com/world">US 🇺🇸 CNN (Cable News Network)</a><a id="card4" class="card" target="_blank" href="https://cbsnews.com/world">US 🇺🇸 CBS (Columbia Broadcasting System)</a><a id="card5" class="card" target="_blank" href="https://nbcnews.com/world">US 🇺🇸 NBC (National Broadcasting Company)</a
+      ><a id="card6" class="card" target="_blank" href="https://apnews.com/world-news">US 🇺🇸 AP (Associated Press)</a><a id="card7" class="card" target="_blank" href="https://foxnews.com/world">US 🇺🇸 Fox News</a><a id="card8" class="card" target="_blank" href="https://abcnews.go.com/International">US 🇺🇸 ABC (American Broadcasting Company)</a
+      ><a id="card9" class="card" target="_blank" href="https://cbc.ca/news/world">Canada 🇨🇦 CBC (Canadian Broadcasting Corporation)</a><a id="card10" class="card" target="_blank" href="https://euronews.com">Europe 🇪🇺 Euronews</a><a id="card11" class="card" target="_blank" href="https://politico.eu">Europe 🇪🇺 Politico</a
+      ><a id="card12" class="card" target="_blank" href="https://bbc.com/news">UK 🇬🇧 BBC (British Broadcasting Corporation)</a><a id="card13" class="card" target="_blank" href="https://reuters.com/world">UK 🇬🇧 Reuters</a><a id="card14" class="card" target="_blank" href="https://theguardian.com/international">UK 🇬🇧 The Guardian</a
+      ><a id="card15" class="card" target="_blank" href="https://independent.co.uk/news/world">UK 🇬🇧 The Independent</a><a id="card16" class="card" target="_blank" href="https://spiegel.de/international">Germany 🇩🇪 Der Spiegel</a><a id="card17" class="card" target="_blank" href="https://dw.com/en">Germany 🇩🇪 DW (Deutsche Welle)</a
+      ><a id="card18" class="card" target="_blank" href="https://lemonde.fr/en/international/">France 🇫🇷 Le Monde</a><a id="card19" class="card" target="_blank" href="https://english.elpais.com/international">Spain 🇪🇸 El Pais</a><a id="card20" class="card" target="_blank" href="https://kyivindependent.com/tag/news-feed">Ukraine 🇺🇦 Kyiv Independent</a
+      ><a id="card21" class="card" target="_blank" href="https://sputnikglobe.com/world">Russia 🇷🇺 Sputnik</a><a id="card22" class="card" target="_blank" href="https://tass.com/world">Russia 🇷🇺 TASS (Telegraph Agency of the Soviet Union)</a><a id="card23" class="card" target="_blank" href="https://themoscowtimes.com/news">Russia 🇷🇺 The Moscow Times</a
+      ><a id="card24" class="card" target="_blank" href="https://trt.global/world">Turkey 🇹🇷 TRT (Turkish Radio and Television)</a><a id="card25" class="card" target="_blank" href="https://aa.com.tr/en/world">Turkey 🇹🇷 Anadolu Agency</a><a id="card26" class="card" target="_blank" href="https://aljazeera.com/news">Qatar 🇶🇦 Al Jazeera</a
+      ><a id="card27" class="card" target="_blank" href="https://gulfnews.com/world">UAE 🇦🇪 Gulf News</a><a id="card28" class="card" target="_blank" href="https://haaretz.com">Israel 🇮🇱 Haaretz</a><a id="card29" class="card" target="_blank" href="https://thediplomat.com/topics/politics">Australia 🇦🇺 The Diplomat</a
+      ><a id="card30" class="card" target="_blank" href="https://smh.com.au/world">Australia 🇦🇺 The Sydney Morning Herald</a><a id="card31" class="card" target="_blank" href="https://astanatimes.com">Kazakhstan 🇰🇿 Astana Times</a><a id="card32" class="card" target="_blank" href="https://japantimes.co.jp/news/world">Japan 🇯🇵 Japan Times</a
+      ><a id="card33" class="card" target="_blank" href="https://koreaherald.com/World">South Korea 🇰🇷 Korea Herald</a><a id="card34" class="card" target="_blank" href="https://straitstimes.com/world">Singapore 🇸🇬 Straits Times</a><a id="card35" class="card" target="_blank" href="https://cgtn.com/world">Republic of China 🇨🇳 CGTN (China Global Television Network)</a
+      ><a id="card36" class="card" target="_blank" href="https://scmp.com/news/world">Hong Kong 🇭🇰 South China Morning Post</a><a id="card37" class="card" target="_blank" href="https://asiatimes.com/category/world">Hong Kong 🇭🇰 Asia Times</a><a id="card38" class="card" target="_blank" href="https://thehindu.com/news/international">India 🇮🇳 The Hindu</a
+      ><a id="card39" class="card" target="_blank" href="https://dawn.com/world">Pakistan 🇵🇰 Dawn Pakistan</a><a id="card40" class="card" target="_blank" href="https://thedailystar.net/news/world">Bangladesh 🇧🇩 The Daily Star</a><a id="card41" class="card" target="_blank" href="https://quantamagazine.org">US 🇺🇸 Quanta Magazine 🧬</a
+      ><a id="card42" class="card" target="_blank" href="https://nationalgeographic.com">US 🇺🇸 National Geographic 🧬</a><a id="card43" class="card" target="_blank" href="https://sciencenews.org">US 🇺🇸 Science News 🧬</a><a id="card44" class="card" target="_blank" href="https://npr.org/sections/world">US 🇺🇸 NPR (National Public Radio)</a
+      ><a id="card45" class="card" target="_blank" href="https://truthout.org">US 🇺🇸 Truthout</a><a id="card46" class="card" target="_blank" href="https://dailymail.co.uk/news/index.html">UK 🇬🇧 Daily Mail</a><a id="card47" class="card" target="_blank" href="https://csmonitor.com/World">US 🇺🇸 The Christian Science Monitor</a
+      ><a id="card48" class="card" target="_blank" href="https://hrw.org">US 🇺🇸 Human Rights Watch</a><a id="card49" class="card" target="_blank" href="https://theplayerstribune.com">US 🇺🇸 The Players' Tribune ⚽️</a><a id="card50" class="card" target="_blank" href="https://plaintextsports.com">PlainTextSports 🗂️ ⚽️</a
+      ><a id="card51" class="card" target="_blank" href="https://espn.com/soccer">US 🇺🇸 ESPN (Entertainment and Sports Programming Network) ⚽️</a><a id="card52" class="card" target="_blank" href="https://ign.com">US 🇺🇸 IGN (Imagine Games Network) 👾</a><a id="card53" class="card" target="_blank" href="https://skimfeed.com/politicspop.html">Skimfeed 🗂️</a
+      ><a id="card54" class="card" target="_blank" href="https://newsasfacts.com">News As Facts 🗂️</a><a id="card55" class="card" target="_blank" href="https://spike.news">Spike News 🗂️</a><a id="card56" class="card" target="_blank" href="https://drudgereport.com">Drudge Report 🗂️</a
+      ><a id="card57" class="card" target="_blank" href="https://newsminimalist.com/?category=all&amp;sort=significance&amp;from=5&amp;to=10">News Minimalist 🗂️</a><a id="card58" class="card" target="_blank" href="https://brutalist.report/topic/news?limit=5">Brutalist 🗂️</a><a id="card59" class="card" target="_blank" href="https://newsnow.co.uk/h/World+News">News Now 🗂️</a
+      ><a id="card60" class="card" target="_blank" href="https://biztoc.com/light">Biztoc 💵 🗂️</a>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Fjalla+One" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans" rel="stylesheet" />
+    <title>Newspaper 📰</title>
+  </head>
+  <style>
+    body {
+      font-family: 'DM Sans', sans-serif;
+      font-family: 'Fjalla One', sans-serif;
+      font-size: 2rem;
+      font-weight: 400;
+      font-style: normal;
+      background-color: rgb(200, 200, 200);
+      color: black;
+      text-align: center;
+      margin: 0;
+      padding: 0;
+    }
+
+    a {
+      color: unset;
+      text-decoration: unset;
+    }
+
+    main {
+      display: grid;
+      grid-template-columns: auto auto auto;
+      padding: 1rem;
+    }
+
+    main > .card {
+      display: block;
+      text-align: end;
+      margin: 0.4rem 0.2rem;
+      padding: 0.2rem;
+      background-color: rgb(240, 240, 240);
+      border: 0.1rem solid black;
+      border-radius: 1rem;
+    }
+
+    @media only screen and (max-width: 1000px) {
+      body {
+        font-size: 1.4rem;
+      }
+      main {
+        grid-template-columns: auto auto;
+      }
+    }
+    @media only screen and (max-width: 400px) {
+      body {
+        font-size: 1.2rem;
+      }
+      main {
+        grid-template-columns: auto;
+      }
+      h1 {
+        font-size: 1.5rem;
+      }
+    }
+  </style>
+  <body>
+    <header>
+      <h1>NEWS DASHBOARD 📰</h1>
+    </header>
+    <main></main>
+  </body>
+  <script>
+    const content = [
+      {
+        title: 'Wikipedia Events 🗂️',
+        url: 'https://en.m.wikipedia.org/wiki/Portal:Current_events',
+        rssUrl: '',
+      },
+      {
+        title: 'Wikinews 🗂️',
+        url: 'https://en.m.wikinews.org/wiki/Main_Page',
+        rssUrl: 'https://en.wikinews.org/w/index.php?title=Special:NewsFeed&feed=rss',
+      },
+      {
+        title: 'Google News 🗂️',
+        url: 'https://news.google.com/home',
+        rssUrl: '',
+      },
+      {
+        title: 'US 🇺🇸 CNN (Cable News Network)',
+        url: 'https://edition.cnn.com/world',
+        rssUrl: '',
+        liteUrl: 'https://lite.cnn.com',
+      },
+      {
+        title: 'US 🇺🇸 CBS (Columbia Broadcasting System)',
+        url: 'https://cbsnews.com/world',
+        rssUrl: 'https://cbsnews.com/latest/rss/main',
+      },
+      {
+        title: 'US 🇺🇸 NBC (National Broadcasting Company)',
+        url: 'https://nbcnews.com/world',
+        rssUrl: 'https://feeds.nbcnews.com/nbcnews/public/world',
+      },
+      {
+        title: 'US 🇺🇸 AP (Associated Press)',
+        url: 'https://apnews.com/world-news',
+        rssUrl: '',
+      },
+      {
+        title: 'US 🇺🇸 Fox News',
+        url: 'https://foxnews.com/world',
+        rssUrl: 'https://moxie.foxnews.com/google-publisher/world.xml',
+      },
+      {
+        title: 'US 🇺🇸 ABC (American Broadcasting Company)',
+        url: 'https://abcnews.go.com/International',
+        rssUrl: 'https://abcnews.go.com/abcnews/internationalheadlines',
+      },
+      {
+        title: 'Canada 🇨🇦 CBC (Canadian Broadcasting Corporation)',
+        url: 'https://cbc.ca/news/world',
+        rssUrl: 'https://cbc.ca/webfeed/rss/rss-world',
+        liteUrl: 'https://cbc.ca/lite/news?sort=editors-picks',
+      },
+      {
+        title: 'Europe 🇪🇺 Euronews',
+        url: 'https://euronews.com',
+        rssUrl: 'https://euronews.com/rss',
+      },
+      {
+        title: 'Europe 🇪🇺 Politico',
+        url: 'https://politico.eu',
+        rssUrl: 'https://politico.eu/feed',
+      },
+      {
+        title: 'UK 🇬🇧 BBC (British Broadcasting Corporation)',
+        url: 'https://bbc.com/news',
+        rssUrl: 'https://feeds.bbci.co.uk/news/world/rss.xml',
+      },
+      {
+        title: 'UK 🇬🇧 Reuters',
+        url: 'https://reuters.com/world',
+        rssUrl: '',
+      },
+      {
+        title: 'UK 🇬🇧 The Guardian',
+        url: 'https://theguardian.com/international',
+        rssUrl: 'https://theguardian.com/world/rss',
+      },
+      {
+        title: 'UK 🇬🇧 The Independent',
+        url: 'https://independent.co.uk/news/world',
+        rssUrl: 'https://independent.co.uk/news/world/rss',
+      },
+      {
+        title: 'Germany 🇩🇪 Der Spiegel',
+        url: 'https://spiegel.de/international',
+        rssUrl: 'https://spiegel.de/international/index.rss',
+      },
+      {
+        title: 'Germany 🇩🇪 DW (Deutsche Welle)',
+        url: 'https://dw.com/en',
+        rssUrl: 'https://rss.dw.com/rdf/rss-en-top',
+      },
+      {
+        title: 'France 🇫🇷 Le Monde',
+        url: 'https://lemonde.fr/en/international/',
+        rssUrl: 'https://lemonde.fr/en/international/rss_full.xml',
+      },
+      {
+        title: 'Spain 🇪🇸 El Pais',
+        url: 'https://english.elpais.com/international',
+        rssUrl: 'https://feeds.elpais.com/mrss-s/pages/ep/site/english.elpais.com/portada',
+      },
+      {
+        title: 'Ukraine 🇺🇦 Kyiv Independent',
+        url: 'https://kyivindependent.com/tag/news-feed',
+        rssUrl: 'https://kyivindependent.com/news-archive/rss',
+      },
+      {
+        title: 'Russia 🇷🇺 Sputnik',
+        url: 'https://sputnikglobe.com/world',
+        rssUrl: 'https://sputnikglobe.com/export/rss2/archive/index.xml',
+      },
+      {
+        title: 'Russia 🇷🇺 TASS (Telegraph Agency of the Soviet Union)',
+        url: 'https://tass.com/world',
+        rssUrl: 'https://tass.com/rss/v2.xml',
+      },
+      {
+        title: 'Russia 🇷🇺 The Moscow Times',
+        url: 'https://themoscowtimes.com/news',
+        rssUrl: 'https://themoscowtimes.com/rss/news',
+      },
+      {
+        title: 'Turkey 🇹🇷 TRT (Turkish Radio and Television)',
+        url: 'https://trt.global/world',
+        rssUrl: 'https://trthaber.com/dunya_articles.rss',
+      },
+      {
+        title: 'Turkey 🇹🇷 Anadolu Agency',
+        url: 'https://aa.com.tr/en/world',
+        rssUrl: 'https://aa.com.tr/en/rss/default?cat=world',
+      },
+      {
+        title: 'Qatar 🇶🇦 Al Jazeera',
+        url: 'https://aljazeera.com/news',
+        rssUrl: 'https://aljazeera.com/xml/rss/all.xml',
+      },
+      {
+        title: 'UAE 🇦🇪 Gulf News',
+        url: 'https://gulfnews.com/world',
+        rssUrl: 'https://gulf-times.com/rssFeed/9',
+      },
+      {
+        title: 'Israel 🇮🇱 Haaretz',
+        url: 'https://haaretz.com',
+        rssUrl: 'https://haaretz.com/srv/world-news-rss',
+      },
+      {
+        title: 'Australia 🇦🇺 The Diplomat',
+        url: 'https://thediplomat.com/topics/politics',
+        rssUrl: 'https://thediplomat.com/feed',
+      },
+      {
+        title: 'Australia 🇦🇺 The Sydney Morning Herald',
+        url: 'https://smh.com.au/world',
+        rssUrl: 'https://smh.com.au/rss/world.xml',
+      },
+      {
+        title: 'Kazakhstan 🇰🇿 Astana Times',
+        url: 'https://astanatimes.com',
+        rssUrl: 'https://astanatimes.com/feed',
+      },
+      {
+        title: 'Japan 🇯🇵 Japan Times',
+        url: 'https://japantimes.co.jp/news/world',
+        rssUrl: 'https://japantimes.co.jp/feed',
+      },
+      {
+        title: 'South Korea 🇰🇷 Korea Herald',
+        url: 'https://koreaherald.com/World',
+        rssUrl: 'https://koreaherald.com/rss/kh_World',
+      },
+      {
+        title: 'Singapore 🇸🇬 Straits Times',
+        url: 'https://straitstimes.com/world',
+        rssUrl: 'https://straitstimes.com/news/world/rss.xml',
+      },
+      {
+        title: 'Republic of China 🇨🇳 CGTN (China Global Television Network)',
+        url: 'https://cgtn.com/world',
+        rssUrl: 'https://cgtn.com/subscribe/rss/section/world.xml',
+      },
+      {
+        title: 'Hong Kong 🇭🇰 South China Morning Post',
+        url: 'https://scmp.com/news/world',
+        rssUrl: 'https://scmp.com/rss/5/feed',
+      },
+      {
+        title: 'Hong Kong 🇭🇰 Asia Times',
+        url: 'https://asiatimes.com/category/world',
+        rssUrl: 'https://asiatimes.com/category/world/feed',
+      },
+      {
+        title: 'India 🇮🇳 The Hindu',
+        url: 'https://thehindu.com/news/international',
+        rssUrl: 'https://thehindu.com/news/international/feeder/default.rss',
+      },
+      {
+        title: 'Pakistan 🇵🇰 Dawn Pakistan',
+        url: 'https://dawn.com/world',
+        rssUrl: 'https://dawn.com/feeds/home',
+      },
+      {
+        title: 'Bangladesh 🇧🇩 The Daily Star',
+        url: 'https://thedailystar.net/news/world',
+        rssUrl: '',
+      },
+      {
+        title: 'US 🇺🇸 Quanta Magazine 🧬',
+        url: 'https://quantamagazine.org',
+        rssUrl: '',
+      },
+      {
+        title: 'US 🇺🇸 National Geographic 🧬',
+        url: 'https://nationalgeographic.com',
+        rssUrl: '',
+      },
+      {
+        title: 'US 🇺🇸 Science News 🧬',
+        url: 'https://sciencenews.org',
+        rssUrl: 'https://sciencenews.org/feed',
+      },
+      {
+        title: 'US 🇺🇸 NPR (National Public Radio)',
+        url: 'https://npr.org/sections/world',
+        rssUrl: 'https://feeds.npr.org/1004/rss.xml',
+        liteUrl: 'https://text.npr.org',
+      },
+      {
+        title: 'US 🇺🇸 Truthout',
+        url: 'https://truthout.org',
+        rssUrl: '',
+      },
+      {
+        title: 'UK 🇬🇧 Daily Mail',
+        url: 'https://dailymail.co.uk/news/index.html',
+        rssUrl: 'https://dailymail.co.uk/news/worldnews/index.rss',
+        liteUrl: 'https://dailymail.co.uk/textbased/channel-2/index.html',
+      },
+      {
+        title: 'US 🇺🇸 The Christian Science Monitor',
+        url: 'https://csmonitor.com/World',
+        rssUrl: 'https://rss.csmonitor.com/feeds/world',
+        liteUrl: 'https://csmonitor.com/text_edition',
+      },
+      {
+        title: 'US 🇺🇸 Human Rights Watch',
+        url: 'https://hrw.org',
+        rssUrl: 'https://hrw.org/rss/news',
+        liteUrl: 'https://text.hrw.org',
+      },
+      {
+        title: "US 🇺🇸 The Players' Tribune ⚽️",
+        url: 'https://theplayerstribune.com',
+        rssUrl: '',
+      },
+      {
+        title: 'PlainTextSports 🗂️ ⚽️',
+        url: 'https://plaintextsports.com',
+        rssUrl: '',
+      },
+      {
+        title: 'US 🇺🇸 ESPN (Entertainment and Sports Programming Network) ⚽️',
+        url: 'https://espn.com/soccer',
+        rssUrl: 'https://espn.com/espn/rss/soccer/news',
+      },
+      {
+        title: 'US 🇺🇸 IGN (Imagine Games Network) 👾',
+        url: 'https://ign.com',
+        rssUrl: 'https://feeds.feedburner.com/ign/all',
+      },
+      {
+        title: 'Skimfeed 🗂️',
+        url: 'https://skimfeed.com/politicspop.html',
+        rssUrl: '',
+      },
+      {
+        title: 'News As Facts 🗂️',
+        url: 'https://newsasfacts.com',
+        rssUrl: '',
+      },
+      {
+        title: 'Spike News 🗂️',
+        url: 'https://spike.news',
+        rssUrl: '',
+      },
+      {
+        title: 'Drudge Report 🗂️',
+        url: 'https://drudgereport.com',
+        rssUrl: '',
+      },
+      {
+        title: 'News Minimalist 🗂️',
+        url: 'https://newsminimalist.com/?category=all&sort=significance&from=5&to=10',
+        rssUrl: '',
+      },
+      {
+        title: 'Brutalist 🗂️',
+        url: 'https://brutalist.report/topic/news?limit=5',
+        rssUrl: '',
+      },
+      {
+        title: 'News Now 🗂️',
+        url: 'https://newsnow.co.uk/h/World+News',
+        rssUrl: '',
+      },
+      {
+        title: 'Biztoc 💵 🗂️',
+        url: 'https://biztoc.com/light',
+        rssUrl: '',
+      },
+    ];
+
+    const cardElements = content.map((item, index) => {
+      const cardElement = document.createElement('a');
+      cardElement.setAttribute('id', `card${index}`);
+      cardElement.setAttribute('class', 'card');
+      cardElement.setAttribute('target', '_blank');
+      cardElement.setAttribute('href', item.url);
+      cardElement.innerText = item.title;
+      return cardElement;
+    });
+
+    const mainElement = document.querySelector('main');
+    mainElement.innerHTML = '';
+    cardElements.forEach((cardElement) => {
+      mainElement.append(cardElement);
+    });
+
+    document.currentScript.remove();
+    console.info('NEWS 📰 Copy the following html element 📑');
+    console.log(document.querySelector('html'));
+  </script>
+</html>
